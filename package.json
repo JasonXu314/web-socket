@@ -1,6 +1,6 @@
 {
 	"name": "@nano-utils/web-socket",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A lightweight wrapper library around the web WebSocket API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -11,9 +11,7 @@
 	],
 	"scripts": {
 		"test": "jest",
-		"build": "tsc -b ./tsconfig.json",
-		"prepublish": "yarn build",
-		"publish": "npm publish"
+		"build": "tsc -b ./tsconfig.json"
 	},
 	"devDependencies": {
 		"@types/jest": "^27.0.2",

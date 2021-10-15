@@ -5,7 +5,7 @@ import { SocketMsg } from './types';
 /**
  * A wrapper class around the web WebSocket API
  */
-export class Socket<IM extends { [key: string]: SocketMsg<typeof key> }, OM extends { [key: string]: SocketMsg<typeof key> }> {
+export class Socket<IM extends { [K in IT]: SocketMsg<K> }, OM extends { [K in OT]: SocketMsg<K> }, IT extends string = KeyOf<IM>, OT extends string = KeyOf<OM>> {
 	private logger: Logger;
 	private _socket: WebSocket;
 	private msgQueue: OM[KeyOf<OM>][];
