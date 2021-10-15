@@ -21,8 +21,8 @@ import { Socket } from '@nano-utils/web-socket';
 
 const socket = new Socket('wss://example.com');
 
-socket.on('MY_MESSAGE', (evt) => {
-	console.log(`Type: ${evt.type}, Foo: ${evt.foo}`); // Type: MY_MESSAGE, Foo: something
+socket.on('MY_MESSAGE', (msg) => {
+	console.log(`Type: ${msg.type}, Foo: ${msg.foo}`); // Type: MY_MESSAGE, Foo: something
 });
 ```
 
@@ -37,8 +37,8 @@ type Msgs = {
 
 const socket = new Socket<Msgs, {}>('wss://example.com'); // second type parameter is for outgoing messages
 
-socket.on('MY_MESSAGE', (evt) => {
-	console.log(`Type: ${evt.type}, Foo: ${evt.foo}`); // Type: MY_MESSAGE, Foo: something
+socket.on('MY_MESSAGE', (msg) => {
+	console.log(`Type: ${msg.type}, Foo: ${msg.foo}`); // Type: MY_MESSAGE, Foo: something
 });
 ```
 
@@ -84,5 +84,6 @@ async function myFunc2() {
 
 ## Usage Notes:
 
--   Each message must have a type property, which is litstened to in the `on` method
--   If using typescript, each message's key in the message map must match the type property of the message
+-   Each message (both outgoing and incoming) must have a type property, which is litstened to in the `on` method
+-   If using typescript, each message's key in the message type map must match the type property of the message
+-   This package is designed to be paired with the [server-sockets](https://npmjs.org/packages/@nano-utils/server-sockets) library on the backend, but any server that sends messages in json format with type properties will work
